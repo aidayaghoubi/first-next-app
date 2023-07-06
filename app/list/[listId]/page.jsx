@@ -1,11 +1,14 @@
 "use client"; // This is a client component 👈🏽
 
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-const List = () => {
+function List() {
   //by this we can access to our url and its dynamic part
-  const router = usePathname();
+  const path = usePathname();
 
-  return <div>{router}</div>;
-};
+  const router = useRouter();
+
+  return <div>{path}</div>;
+}
 export default List;

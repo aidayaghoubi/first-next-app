@@ -1,14 +1,22 @@
-"use client"; // This is a client component 👈🏽
-
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
-
-function List() {
+async function List({ params }) {
   //by this we can access to our url and its dynamic part
-  const path = usePathname();
+  let data;
 
-  const router = useRouter();
+  const res = await fetch(
+    "http://worldtimeapi.org/api/timezone/America/Chicago",
+    {
+      next: {
+        revalidate: 5,
+      },
+    }
+  );
+  const dataRepo = await res.json();
 
-  return <div>{path}</div>;
+  return (
+    <div className="text-gray-0">
+      {params.listId}
+      <div>{dataRepo.datetime}</div>
+    </div>
+  );
 }
 export default List;

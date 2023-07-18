@@ -7,9 +7,9 @@ function getToDos() {
   return prisma.todo.findMany();
 }
 
-async function onToggleTodo(id: string, complete: boolean) {
-  "use server";
-}
+// async function onToggleTodo(id: string, complete: boolean) {
+//   "use server";
+// }
 
 export default async function Todo() {
   //to add item for testing
@@ -31,7 +31,7 @@ export default async function Todo() {
       <ul>
         {toDos.map((todo) => (
           <TodoItem
-            toggleTodo={onToggleTodo}
+            // toggleTodo={onToggleTodo}
             id={todo.id}
             isComplete={todo.complete}
             title={todo.title}
